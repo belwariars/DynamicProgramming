@@ -1,0 +1,47 @@
+// LONGEST PALINDROMIC SUBSEQUENCE...
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void longestPalSub(char str[], int n)
+{
+	int table[n][n];
+	int i,j,l;
+	
+	for(i=0; i<n; i++)
+	{
+		table[i][i] = 1; // AS THE SMALLEST PALINDROME IS 1, THAT LETTER ITSELF
+	}
+	
+	for(l=2; l<=n; l++)
+	{
+		for(i=0; i<n-l+1; i++)
+		{
+			j = i+l-1;
+			
+			if(str[i] == str[j] && l ==2)
+			{
+				table[i][j] = 2;
+			}
+			else if(str[i] == str[j])
+			{
+				table[i][j] = table[i+1][j-1] + 2;
+			}
+			else
+			{
+				table[i][j] = max(table[i][j-1], table[i+1][j]);
+			}
+		}
+	}
+	
+	printf("Longest Palindromic SubSequence:  %d", table[0][n-1]);
+}
+
+int main()
+{
+	char str[] = "GEEKS FOR GEEKS";
+	int n = strlen(str);
+	
+	longestPalSub(str, n);
+	return 0;
+}
