@@ -31,7 +31,7 @@ void matrixChainMul(int arr[], int n)
 		}
 	}
 	
-	printf("Maximum no. of Multiplications = %d", table[1][n-1]);
+	printf("Minimum no. of Multiplications = %d", table[1][n-1]);
 }
 
 int main()
